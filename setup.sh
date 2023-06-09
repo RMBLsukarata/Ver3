@@ -203,7 +203,7 @@ gg="AM"
 fi
 curl -sS ifconfig.me > /etc/myipvps
 echo " "
-echo "=====================-[ SCRIPT RMBL TUNNEL ]-===================="
+echo "=====================-[ SCRIPT RMBL VPN ]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""
@@ -243,7 +243,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Created By RMBL sukarata ]-==============="
+echo "===============-[ Script Created By RMBL VPN ]-==============="
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
