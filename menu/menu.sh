@@ -231,21 +231,31 @@ read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
 export sem=$( curl -s https://raw.githubusercontent.com/artanodrop/permission/main/versions)
-export pak=$( cat /home/.ver)
+# TOTAL RAM
+total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
+totalram=$(($total_ram/1024))
+# GETTING DOMAIN NAME
+Domen="$(cat /etc/xray/domain)"
+Slow="$(cat /root/nsdomain)"
+uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
+upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
+uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
+cekup=`uptime -p | grep -ow "day"`
 IPVPS=$(curl -s ipinfo.io/ip )
+ISPVPS=$( curl -s ipinfo.io/org )
 clear
-echo -e "                         ${BIWhite}${UWhite}About${NC}"
-echo -e "                 ${BICyan}Base Script : ${BIPurple}Premium ${NC}"
-echo -e "                 ${BICyan}Bot Dev     : ${BIPurple}@rmblbot ${NC}"
-echo -e "                 ${BICyan}Decodec     :${BIPurple} @rmblvpn ${NC}"
-echo -e "               ${BICyan}${On_IPurple} SCRIPT MULTI RMBL VPN ${UWhite}${NC}"
-echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan} │                  ${BIWhite}${UWhite}Server Informations${NC}"
-echo -e "${BICyan} │"
-echo -e " ${BICyan}│  ${BICyan}Use Core        :  ${BIPurple}XRAY${NC}"
-echo -e " ${BICyan}│  ${BICyan}Current Domain  :  ${BIPurple}$(cat /etc/xray/domain)${NC}"
-echo -e " ${BICyan}│  ${BICyan}IP-VPS          :  ${BIYellow}$IPVPS${NC}"
-echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
+echo -e "               ${BICyan}${On_IPurple}  RMBL VPN TUNNELING${UWhite}${NC}"
+echo -e "\033[0;91m ┌─────────────────────────────────────────────────────┐\033[0m"
+echo -e "\033[0;91m │                  ${BIPurple}${BIPurple}Server Informations${NC}"     
+echo -e "\033[0;91m │"
+echo -e " \033[0;91m│  ${BIPurple} Hostname    : $HOSTNAME"
+echo -e " \033[0;91m│  ${BIPurple} Total RAM   : ${totalram}MB"
+echo -e " \033[0;91m│  ${BIPurple} Public IP   : $MYIP"
+echo -e " \033[0;91m│  ${BIPurple} Domain      : $Domen"
+echo -e " \033[0;91m│  ${BIPurple} ISP         : $ISPVPS"
+echo -e " \033[0;91m│  ${BIPurple} Waktu Aktif : $uphours $upminutes $uptimecek"
+echo -e " \033[0;91m│  ${BIPurple} Expiry scrip : ${BIYellow}$Exp${NC} Days"
+echo -e " \033[0;91m└─────────────────────────────────────────────────────┘\033[0m"
 echo -e "     ${BICyan} SSH ${NC}: $ressh"" ${BICyan} NGINX ${NC}: $resngx"" ${BICyan}  XRAY ${NC}: $resv2r"" ${BICyan} TROJAN ${NC}: $resv2r"
 echo -e "   ${BICyan}     STUNNEL ${NC}: $resst" "${BICyan} DROPBEAR ${NC}: $resdbr" "${BICyan} SSH-WS ${NC}: $ressshws"
 echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
@@ -265,7 +275,6 @@ echo -e "${BICyan} └───────────────────�
 echo -e " ${BICyan}┌─────────────────────────────────────┐${NC}"
 echo -e " ${BICyan}│  Version      ${NC} : Ver3. Last Update"
 echo -e " ${BICyan}│  User       ${NC}   :\033[1;36m $Name \e[0m"
-echo -e " ${BICyan}│  Expiry script${NC} : ${BIYellow}$Exp${NC} Days"
 echo -e " ${BICyan}└─────────────────────────────────────┘${NC}"
 echo
 read -p " Select menu : " opt
